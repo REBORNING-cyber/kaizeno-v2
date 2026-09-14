@@ -1,0 +1,3 @@
+npm notice run kaizeno-v2@0.1.0 start
+npm notice run next start
+⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase

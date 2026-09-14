@@ -1,0 +1,38 @@
+{
+  "name": "kaizeno-v2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "db:init": "powershell -ExecutionPolicy Bypass -File scripts/db-init.ps1",
+    "db:start": "powershell -ExecutionPolicy Bypass -File scripts/db.ps1 start",
+    "db:stop": "powershell -ExecutionPolicy Bypass -File scripts/db.ps1 stop",
+    "db:status": "powershell -ExecutionPolicy Bypass -File scripts/db.ps1 status",
+    "db:setup": "npm run db:init && npm run db:start && npx prisma migrate dev && npx prisma generate",
+    "db:create": "powershell -ExecutionPolicy Bypass -Command \"& '.\\\\.infra\\\\pgsql\\\\bin\\\\createdb.exe' -h localhost -p 5433 -U postgres kaizeno; if ($LASTEXITCODE -ne 0 -and $LASTEXITCODE -ne 1) { exit $LASTEXITCODE }\""
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "hls.js": "^1.7.3",
+    "next": "16.3.5",
+    "pg": "^8.23.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
+    "prisma": "^7.10.0",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.13",
+    "typescript": "^5"
+  }
+}
